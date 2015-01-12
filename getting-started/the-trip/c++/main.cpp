@@ -2,7 +2,8 @@
 #include<vector>
 #include<numeric>
 #include<iterator>
-#include<stdio.h>  
+#include<sstream>
+// #include<stdio.h>  
 using namespace std;
 
 int main(int argc, char** argv){
@@ -10,17 +11,29 @@ int main(int argc, char** argv){
   while (cin >> numberOfStudents && numberOfStudents != 0) {
   vector<unsigned int> students(numberOfStudents);
 
-/*
-	double input;
-	for (unsigned int i = 0; i < numberOfStudents; i++) {
-		cin >> input;
-		students.push_back(input * 100);
-	}
-  */
-
   int dollars, cents;
+  istringstream iss;
+  string buffer;
+  
+  // get the remaining
+  getline(cin, buffer);
   for (unsigned int i = 0; i < numberOfStudents; i++){
-    scanf("%d.%d", &dollars, &cents);
+    getline(cin, buffer);
+    // sanitize input
+    // cout << buffer << endl;
+    for(int i=0; i< buffer.length(); i++){
+      char& c = buffer[i];
+      if(c == '$' || c == '.')
+        c = ' ';
+    }
+   // cout << buffer << endl;
+
+    iss.clear();
+    iss.str(buffer);
+    iss >> dollars >> cents; 
+    
+    // cout << dollars << ',' << cents << endl;
+    // scanf("%d.%d", &dollars, &cents);
     students.push_back(dollars*100 + cents);
   }
 
