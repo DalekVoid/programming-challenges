@@ -6,4 +6,16 @@ F 3 3 J
 V 2 3 4 W
 H 3 4 2 Z
 S two.bmp
+I 4 5
+K 2 2 3 4 W
+S three.bmp
+I 4 4
+L 3 1 A
+L 4 2 A
+F 2 2 X
+S four.bmp
+F 1 4 X
+S five.bmp
+C 1 2 3 4 5 6
+S six.bmp
 X
